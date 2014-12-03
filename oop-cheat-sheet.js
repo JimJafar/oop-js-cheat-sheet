@@ -1,10 +1,7 @@
-/**
- * Created by jim on 28/11/14.
- */
-
 // **********************************************************************************
 // * Object literal
 // * The simplest way of grouping properties and methods
+// * `{}` is analogous to `new Object()`
 // **********************************************************************************
 var ObjectLiteral = {
     property: 42,
@@ -18,8 +15,11 @@ console.log(ObjectLiteral.method()); // 42
 
 
 // **********************************************************************************
-// * Pseudo class with constructor and private members
-// * Useful if you need more than one similar objects that share some functionality
+// * Pseudo Class
+// * Useful if you need more than one similar objects that share some functionality.
+// * This pattern attempts to mimic the way classes in other OOP languages like C#, Java etc. with constructors and private members.
+// * JavaScript does not support the traditional concept of classes (although the `class` keyword is being introduced in ES6) and instead uses prototypal inheritance.
+// * See the Further Reading section below for more information.
 // **********************************************************************************
 var PseudoClass = function(arg) {
     // This is the constructor
@@ -86,8 +86,10 @@ console.log(wrappedVar); // undefined
 
 
 // **********************************************************************************
-// * Closure - a function or object that is returned from an outer function
-// * Useful if you need to maintain state
+// * Closure
+// * A closure is a function or object that is returned from an outer function.
+// * Functions or objects created in this way maintain access to any other variables, parameters or inner functions created in the scope of the outer function.
+// * Useful for maintaining state using private members.
 // **********************************************************************************
 function Factory(arg) {
 
@@ -136,8 +138,12 @@ console.log(closure.getprivateProperty()); // off
 
 
 // **********************************************************************************
-// * Module pattern (basically a closure wrapped in an IIFE)
-// * Useful if you need a single object that supports private members and state
+// * Module pattern
+// * The module pattern in it's simplest form is basically a closure wrapped in an IIFE.
+// * Useful for isolating code, for example a library or a namespace.
+// * Supports private members and exposing a public API.
+// * Well designed modules operate independently of other code so can be dropped in and out as needed.
+// * There are many variations on this pattern - see see links in the Further Reading section below.
 // **********************************************************************************
 var Module = (function() {
     // Private members:
@@ -168,3 +174,23 @@ console.log(Module.publicProperty); // pan galactic gargle blaster
 console.log(Module.getprivateProperty()); // 42
 console.log(Module.callPrivateMethod()); // private
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Further reading
+ * ===============
+ *  There are many other patterns, and many articles that explain the ones here in more depth.
+ *
+ *  Here are some that helped me:
+ *
+ *  - Sebastian Porto >> A Plain English Guide to JavaScript Prototypes -   http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/)
+ *  - Ben Alman >> Immediately-Invoked Function Expression (IIFE) -         http://benalman.com/news/2010/11/immediately-invoked-function-expression/)
+ *  - Ilya Kantor >> Pseudo classical pattern -                             http://javascript.info/tutorial/pseudo-classical-pattern)
+ *  - Ilya Kantor >> Factory constructor pattern -                          http://javascript.info/tutorial/factory-constructor-pattern)
+ *  - Jack Franklin >> An introduction to ES6 classes -                     http://javascriptplayground.com/blog/2014/07/introduction-to-es6-classes-tutorial/)
+ *  - Ben Cherry >> JavaScript Module Pattern: In-Depth -                   http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
+ *  - Todd Motto >> Mastering the Module Pattern -                          http://toddmotto.com/mastering-the-module-pattern/)
+ *  - Carl Danley >> The Revealing Module Pattern -                         https://carldanley.com/js-revealing-module-pattern/)
+ *  - Carl Danley >> The Singleton Pattern -                                https://carldanley.com/js-singleton-pattern/)
+ *  - Addy Osmani >> Essential JavaScript Design Patterns -                 http://addyosmani.com/resources/essentialjsdesignpatterns/book/)
+ *  - Addy Osmani >> Essential JavaScript Namespacing Patterns -            http://addyosmani.com/blog/essential-js-namespacing/)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
